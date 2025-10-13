@@ -6,7 +6,7 @@ import { fetchRequests } from './redux/requestsSlice';
 import Dashboard from './components/Dashboard';
 import TravelRequestForm from './components/TravelRequestForm';
 
-const socket = io('http://localhost:5000');
+const socket = io(import.meta.env.API_URL);
 
 function AppContent() {
   const dispatch = useDispatch();
