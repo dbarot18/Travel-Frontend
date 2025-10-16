@@ -210,6 +210,7 @@ function TravelRequestForm() {
                 </Typography>
 
                 <TextField
+                  id="travel-type"
                   select
                   fullWidth
                   label="Travel Type"
