@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import Dashboard from './components/Dashboard';
 import TravelRequestForm from './components/TravelRequestForm';
 
