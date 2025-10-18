@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router';
 import {
@@ -28,7 +28,7 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(fetchRequests(filterStatus));
-  }, [dispatch, filterStatus]);
+  }, []);
 
   // Statistics
   const stats = {
@@ -260,7 +260,7 @@ function Dashboard() {
                       </TableCell>
                     </TableRow>
                   ) : (
-                    requests.map((request) => (
+                    requests.filter(r => r.status === filterStatus || filterStatus === "all").map((request) => (
                       <TableRow key={request._id} hover sx={{ '&:hover': { bgcolor: '#f8f9fa' } }}>
                         <TableCell>{request._id?.slice(-6) || 'N/A'}</TableCell>
                         <TableCell>
