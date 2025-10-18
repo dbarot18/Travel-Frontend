@@ -1,33 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { io } from 'socket.io-client';
-import { fetchRequests } from './redux/requestsSlice';
 import Dashboard from './components/Dashboard';
 import TravelRequestForm from './components/TravelRequestForm';
 
-const socket = io(import.meta.env.API_URL);
-
 function AppContent() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRequests('all'));
-
-    socket.on('newRequest', () => {
-      dispatch(fetchRequests('all'));
-    });
-
-    socket.on('requestUpdated', () => {
-      dispatch(fetchRequests('all'));
-    });
-
-    return () => {
-      socket.off('newRequest');
-      socket.off('requestUpdated');
-    };
-  }, [dispatch]);
-
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
